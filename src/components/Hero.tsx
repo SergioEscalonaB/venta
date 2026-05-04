@@ -18,7 +18,7 @@ export default function Hero() {
       className="text-white d-flex align-items-center position-relative"
       style={{
         height: "90vh", // Un poco más alto para lucir la imagen
-        backgroundImage: "url(https://picsum.photos/1600/900)",
+        backgroundImage: "url(https://picsum.photos/1600/900)",  // Cambiar aca la imgane principal de fondo
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
