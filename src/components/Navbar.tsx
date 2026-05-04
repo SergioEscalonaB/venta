@@ -58,7 +58,7 @@ export default function Navbar() {
             <li className="nav-item">
               <a
                 className="nav-link btn btn-success text-white px-3 rounded-pill"
-                href="https://wa.me/+573152261110"
+                href="https://wa.me/+573152261110?text=Hola, me interesa la finca en venta en Palmar de Varela."
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ backgroundColor: "#25D366", border: "none" }}
