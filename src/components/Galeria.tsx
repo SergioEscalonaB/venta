@@ -50,7 +50,11 @@ export default function Galeria() {
         }
         // eslint-disable-next-line no-await-in-loop
         if (await exists(mp4)) {
-          found.push({ src: mp4, alt: `Video ${i} de la finca`, type: "video" });
+          found.push({
+            src: mp4,
+            alt: `Video ${i} de la finca`,
+            type: "video",
+          });
         }
       }
 
@@ -71,25 +75,39 @@ export default function Galeria() {
   };
   const close = () => setIsOpen(false);
 
-  const prev = () =>
+  const videoRef = React.useRef<HTMLVideoElement | null>(null);
+
+  const pauseAndPrev = () => {
+    try {
+      videoRef.current?.pause();
+      if (videoRef.current) videoRef.current.currentTime = 0;
+    } catch {}
     setActiveIndex((i) => (i - 1 + items.length) % items.length);
-  const next = () => setActiveIndex((i) => (i + 1) % items.length);
+  };
+
+  const pauseAndNext = () => {
+    try {
+      videoRef.current?.pause();
+      if (videoRef.current) videoRef.current.currentTime = 0;
+    } catch {}
+    setActiveIndex((i) => (i + 1) % items.length);
+  };
 
   React.useEffect(() => {
     if (!isOpen) return;
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
-      if (e.key === "ArrowLeft") prev();
-      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") pauseAndPrev();
+      if (e.key === "ArrowRight") pauseAndNext();
     };
 
-    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("keydown", onKeyDown, true);
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
     return () => {
-      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("keydown", onKeyDown, true);
       document.body.style.overflow = prevOverflow;
     };
   }, [isOpen, items.length]);
@@ -281,9 +299,12 @@ export default function Galeria() {
             >
               {active.type === "video" ? (
                 <video
+                  key={active.src}
+                  ref={videoRef}
                   controls
                   autoPlay
                   playsInline
+                  preload="metadata"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -295,6 +316,7 @@ export default function Galeria() {
                 </video>
               ) : (
                 <img
+                  key={active.src}
                   src={active.src}
                   alt={active.alt}
                   style={{
@@ -309,7 +331,7 @@ export default function Galeria() {
 
             <button
               type="button"
-              onClick={prev}
+              onClick={pauseAndPrev}
               aria-label="Anterior"
               className="btn btn-light"
               style={{
@@ -317,7 +339,8 @@ export default function Galeria() {
                 left: 12,
                 top: "50%",
                 transform: "translateY(-50%)",
-                zIndex: 2,
+                zIndex: 9999,
+                pointerEvents: "auto",
                 borderRadius: 999,
                 opacity: 0.95,
               }}
@@ -326,7 +349,7 @@ export default function Galeria() {
             </button>
             <button
               type="button"
-              onClick={next}
+              onClick={pauseAndNext}
               aria-label="Siguiente"
               className="btn btn-light"
               style={{
@@ -334,7 +357,8 @@ export default function Galeria() {
                 right: 12,
                 top: "50%",
                 transform: "translateY(-50%)",
-                zIndex: 2,
+                zIndex: 9999,
+                pointerEvents: "auto",
                 borderRadius: 999,
                 opacity: 0.95,
               }}
