@@ -1,3 +1,4 @@
+import "./App.css";
 import Caracteristicas from "./components/Caracteristicas";
 import Contacto from "./components/Contacto";
 import Footer from "./components/Footer";
@@ -21,4 +22,3 @@ export default function App() {
     </div>
   );
 }
-

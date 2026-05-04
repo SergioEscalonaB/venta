@@ -17,7 +17,7 @@ export default function Hero() {
     <header
       className="text-white d-flex align-items-center position-relative site-hero"
       style={{
-        height: "90vh", // Un poco más alto para lucir la imagen
+        height: "100vh", // Un poco más alto para lucir la imagen
         backgroundImage: "url(https://picsum.photos/1600/900)", // Cambiar aca la imgane principal de fondo
         backgroundSize: "cover",
         backgroundPosition: "center",
