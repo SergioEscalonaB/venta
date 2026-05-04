@@ -295,6 +295,7 @@ export default function Galeria() {
                 height: "100%",
                 aspectRatio: "16 / 9",
                 userSelect: "none",
+                paddingBottom: 40,
               }}
             >
               {active.type === "video" ? (
