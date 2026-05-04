@@ -37,12 +37,24 @@ export default function Navbar() {
     };
   }, []);
 
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       <nav
         ref={navRef}
-        className="navbar navbar-expand-lg navbar-dark position-absolute top-0 start-0 w-100 site-navbar"
-        style={{ backgroundColor: "transparent", zIndex: 1000 }}
+        className={`navbar navbar-expand-lg navbar-dark position-fixed top-0 start-0 w-100 site-navbar ${
+          scrolled ? "scrolled" : ""
+        }`}
+        style={{ zIndex: 1000 }}
       >
         <div className="container">
           <a

@@ -17,7 +17,7 @@ export default function Hero() {
     <header
       className="text-white d-flex align-items-center position-relative site-hero"
       style={{
-        height: "100vh", // Un poco más alto para lucir la imagen
+        minHeight: "100vh",
         backgroundImage: "url(https://picsum.photos/1600/900)", // Cambiar aca la imgane principal de fondo
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -200,7 +200,7 @@ export default function Hero() {
 
       {/* CÍRCULO TOUR*/}
       <a
-        className="position-absolute d-flex flex-column align-items-center justify-content-center text-white text-decoration-none site-tour-circle"
+        className="position-absolute d-none d-md-flex flex-column align-items-center justify-content-center text-white text-decoration-none site-tour-circle"
         href="#tour"
         style={{
           right: "8%",
