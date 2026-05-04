@@ -76,6 +76,27 @@ export default function Galeria() {
   const close = () => setIsOpen(false);
 
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
+  const [currentTime, setCurrentTime] = React.useState(0);
+  const [duration, setDuration] = React.useState(0);
+
+  const onLoadedMetadata = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    const video = e.currentTarget;
+    setDuration(video.duration || 0);
+    setCurrentTime(video.currentTime || 0);
+  };
+
+  const onTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    const video = e.currentTarget;
+    setCurrentTime(video.currentTime || 0);
+  };
+
+  const onSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = Number(e.target.value);
+    try {
+      if (videoRef.current) videoRef.current.currentTime = val;
+    } catch {}
+    setCurrentTime(val);
+  };
 
   const pauseAndPrev = () => {
     try {
@@ -113,6 +134,11 @@ export default function Galeria() {
   }, [isOpen, items.length]);
 
   const active = items[activeIndex];
+
+  React.useEffect(() => {
+    setCurrentTime(0);
+    setDuration(0);
+  }, [active?.src]);
 
   return (
     <section id="fotos" className="container my-5">
@@ -228,7 +254,7 @@ export default function Galeria() {
           role="dialog"
           aria-modal="true"
           aria-label="Galería"
-          className="d-flex align-items-center justify-content-center"
+          className="d-flex align-items-center justify-content-center galeria-overlay"
           onMouseDown={(e) => {
             if (e.target === e.currentTarget) close();
           }}
@@ -241,6 +267,7 @@ export default function Galeria() {
           }}
         >
           <div
+            className="galeria-modal"
             style={{
               width: "min(1100px, 100%)",
               maxHeight: "min(80vh, 720px)",
@@ -256,7 +283,7 @@ export default function Galeria() {
               type="button"
               onClick={close}
               aria-label="Cerrar"
-              className="btn btn-sm btn-light"
+              className="btn btn-sm btn-light galeria-close"
               style={{
                 position: "absolute",
                 top: 12,
@@ -269,7 +296,7 @@ export default function Galeria() {
             </button>
 
             <div
-              className="d-flex align-items-center justify-content-between text-white"
+              className="d-flex align-items-center justify-content-between text-white galeria-counter"
               style={{
                 position: "absolute",
                 top: 12,
@@ -289,32 +316,63 @@ export default function Galeria() {
             </div>
 
             <div
-              className="d-flex align-items-center justify-content-center"
+              className="d-flex align-items-center justify-content-center galeria-media"
               style={{
                 width: "100%",
                 height: "100%",
                 aspectRatio: "16 / 9",
                 userSelect: "none",
                 paddingBottom: 40,
+                position: "relative",
+                minHeight: 0,
               }}
             >
               {active.type === "video" ? (
-                <video
-                  key={active.src}
-                  ref={videoRef}
-                  controls
-                  autoPlay
-                  playsInline
-                  preload="metadata"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "contain",
-                    background: "rgba(0,0,0,0.25)",
-                  }}
-                >
-                  <source src={active.src} />
-                </video>
+                <>
+                  <video
+                    key={active.src}
+                    ref={videoRef}
+                    controls
+                    autoPlay
+                    playsInline
+                    preload="metadata"
+                    onLoadedMetadata={onLoadedMetadata}
+                    onTimeUpdate={onTimeUpdate}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                      background: "rgba(0,0,0,0.25)",
+                    }}
+                  >
+                    <source src={active.src} />
+                  </video>
+
+                  <div
+                    aria-hidden="true"
+                    className="galeria-progress"
+                    style={{
+                      position: "absolute",
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      padding: 8,
+                      background:
+                        "linear-gradient(0deg, rgba(0,0,0,0.55), transparent)",
+                      zIndex: 3,
+                    }}
+                  >
+                    <input
+                      type="range"
+                      min={0}
+                      max={duration || 0}
+                      step={0.01}
+                      value={Math.min(currentTime, duration || 0)}
+                      onChange={onSeek}
+                      style={{ width: "100%" }}
+                    />
+                  </div>
+                </>
               ) : (
                 <img
                   key={active.src}
@@ -334,16 +392,12 @@ export default function Galeria() {
               type="button"
               onClick={pauseAndPrev}
               aria-label="Anterior"
-              className="btn btn-light"
+              className="btn btn-light galeria-nav galeria-nav-prev"
               style={{
                 position: "absolute",
                 left: 12,
                 top: "50%",
                 transform: "translateY(-50%)",
-                zIndex: 9999,
-                pointerEvents: "auto",
-                borderRadius: 999,
-                opacity: 0.95,
               }}
             >
               ‹
@@ -352,16 +406,12 @@ export default function Galeria() {
               type="button"
               onClick={pauseAndNext}
               aria-label="Siguiente"
-              className="btn btn-light"
+              className="btn btn-light galeria-nav galeria-nav-next"
               style={{
                 position: "absolute",
                 right: 12,
                 top: "50%",
                 transform: "translateY(-50%)",
-                zIndex: 9999,
-                pointerEvents: "auto",
-                borderRadius: 999,
-                opacity: 0.95,
               }}
             >
               ›

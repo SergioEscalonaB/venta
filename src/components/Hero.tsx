@@ -15,10 +15,10 @@ export default function Hero() {
 
   return (
     <header
-      className="text-white d-flex align-items-center position-relative"
+      className="text-white d-flex align-items-center position-relative site-hero"
       style={{
         height: "90vh", // Un poco más alto para lucir la imagen
-        backgroundImage: "url(https://picsum.photos/1600/900)",  // Cambiar aca la imgane principal de fondo
+        backgroundImage: "url(https://picsum.photos/1600/900)", // Cambiar aca la imgane principal de fondo
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -37,7 +37,10 @@ export default function Hero() {
       ></div>
 
       {/* Contenido Principal */}
-      <div className="container position-relative" style={{ zIndex: 2 }}>
+      <div
+        className="container position-relative site-hero-content"
+        style={{ zIndex: 2 }}
+      >
         <small
           className="text-uppercase fw-light mb-2 d-block"
           style={{ letterSpacing: "2px" }}
@@ -46,14 +49,14 @@ export default function Hero() {
         </small>
 
         <h1
-          className="display-3 mb-4"
+          className="display-3 mb-4 site-hero-title"
           style={{ fontFamily: "'Playfair Display', serif", fontWeight: "500" }}
         >
           Finca en venta <br /> en el corazón de Palmar de Varela
         </h1>
 
         <p
-          className="lead mb-5"
+          className="lead mb-5 site-hero-lead"
           style={{ maxWidth: "600px", fontSize: "1.1rem" }}
         >
           Un lugar único para vivir, descansar o invertir.
@@ -61,7 +64,7 @@ export default function Hero() {
         </p>
 
         {/* Fila de Iconos de Características */}
-        <div className="d-flex flex-wrap mb-5 gap-4">
+        <div className="d-flex flex-wrap mb-5 gap-4 site-hero-features">
           {/* Área Total */}
           <div className="d-flex align-items-center">
             <span style={iconWrapStyle} aria-hidden="true">
@@ -179,8 +182,12 @@ export default function Hero() {
         </div>
 
         <button
-          className="btn btn-success px-4 py-2"
-          onClick={() => window.open("https://wa.me/+573152261110?text=Hola, me interesa la finca en venta en Palmar de Varela.")}
+          className="btn btn-success px-4 py-2 site-hero-cta"
+          onClick={() =>
+            window.open(
+              "https://wa.me/+573152261110?text=Hola, me interesa la finca en venta en Palmar de Varela.",
+            )
+          }
           style={{
             backgroundColor: "#3e5234",
             border: "none",
@@ -193,7 +200,7 @@ export default function Hero() {
 
       {/* CÍRCULO TOUR*/}
       <a
-        className="position-absolute d-flex flex-column align-items-center justify-content-center text-white text-decoration-none"
+        className="position-absolute d-flex flex-column align-items-center justify-content-center text-white text-decoration-none site-tour-circle"
         href="#tour"
         style={{
           right: "8%",
