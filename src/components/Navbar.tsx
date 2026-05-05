@@ -98,11 +98,13 @@ export default function Navbar() {
                   Fotos
                 </a>
               </li>
+              {/*}
               <li className="nav-item">
                 <a className="nav-link" href="#tour">
                   Tour 360
                 </a>
               </li>
+              */}
               <li className="nav-item">
                 <a className="nav-link" href="#ubicacion">
                   Ubicación

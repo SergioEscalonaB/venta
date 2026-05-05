@@ -42,13 +42,10 @@ export default function Galeria() {
         const mp4 = `/galeria/${i}.mp4`;
 
         // Preferimos JPG si existe; si no, MP4.
-        // (Si quieres lo contrario, lo invertimos.)
-        // eslint-disable-next-line no-await-in-loop
         if (await exists(jpg)) {
           found.push({ src: jpg, alt: `Foto ${i} de la finca`, type: "image" });
           continue;
         }
-        // eslint-disable-next-line no-await-in-loop
         if (await exists(mp4)) {
           found.push({
             src: mp4,

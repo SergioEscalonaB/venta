@@ -14,7 +14,7 @@ export default function App() {
       <Navbar />
       <Hero />
       <Galeria />
-      <Tour360 />
+      {/*<Tour360 />*/}
       <Ubicacion />
       <Caracteristicas />
       <Contacto />
