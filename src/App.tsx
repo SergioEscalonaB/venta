@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Galeria from "./components/Galeria";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import Tour360 from "./components/Tour360";
+//import Tour360 from "./components/Tour360";
 import Ubicacion from "./components/Ubicacion";
 
 export default function App() {
