@@ -55,7 +55,24 @@ export default function Galeria() {
         }
       }
 
-      if (!cancelled) setItems(found);
+      if (!cancelled) {
+        const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+        if (isMobile) {
+          // Reordenar para móviles: Primero las verticales (>= 44), luego horizontales (< 44)
+          const verticals = found.filter((item) => {
+            const match = item.src.match(/\/galeria\/(\d+)\./);
+            return match && parseInt(match[1]) >= 44;
+          });
+          const horizontals = found.filter((item) => {
+            const match = item.src.match(/\/galeria\/(\d+)\./);
+            return match && parseInt(match[1]) < 44;
+          });
+          setItems([...verticals, ...horizontals]);
+        } else {
+          setItems(found);
+        }
+      }
     })();
 
     return () => {
