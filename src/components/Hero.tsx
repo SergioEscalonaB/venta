@@ -18,7 +18,7 @@ export default function Hero() {
       className="text-white d-flex align-items-center position-relative site-hero"
       style={{
         minHeight: "100vh",
-        backgroundImage: "url(https://picsum.photos/1600/900)", // Cambiar aca la imgane principal de fondo
+        backgroundImage: "url(/public/galeria/30.jpg)", // Cambiar aca la imgane principal de fondo
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -198,7 +198,7 @@ export default function Hero() {
         </button>
       </div>
 
-      {/* CÍRCULO TOUR*/}
+      {/* CÍRCULO TOUR
       <a
         className="position-absolute d-none d-md-flex flex-column align-items-center justify-content-center text-white text-decoration-none site-tour-circle"
         href="#tour"
@@ -268,6 +268,7 @@ export default function Hero() {
           </svg>
         </span>
       </a>
+      */}
     </header>
   );
 }
