@@ -24,7 +24,7 @@ export default function Ubicacion() {
         }}
       >
         <iframe
-          src="https://www.google.com/maps?q=10%C2%B041'46.3%22N%2074%C2%B047'38.5%22W&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          src="https://www.google.com/maps?q=10%C2%B041'46.3%22N%2074%C2%B047'38.5%22W&t=&z=13&ie=UTF8&iwloc=&output=embed"
           width="100%"
           height="500"
           style={{ border: 0, display: "block" }}

@@ -59,8 +59,8 @@ export default function Hero() {
           className="lead mb-5 site-hero-lead"
           style={{ maxWidth: "600px", fontSize: "1.1rem" }}
         >
-          Un lugar único para vivir, descansar o invertir.
-          <br /> Privacidad, naturaleza y todas las comodidades a tu alcance.
+          Oportunidad de inversión: Finca productiva con autonomía de agua 24h y
+          cultivo de limón en producción. El equilibrio perfecto entre descanso y rentabilidad.
         </p>
 
         {/* Fila de Iconos de Características */}
@@ -84,7 +84,7 @@ export default function Hero() {
               >
                 Área total
               </small>
-              <span className="fw-bold">5.4 Hectáreas</span>
+              <span className="fw-bold">3.75 Hectáreas</span>
             </div>
           </div>
 
@@ -153,7 +153,7 @@ export default function Hero() {
               >
                 Habitaciones
               </small>
-              <span className="fw-bold">5</span>
+              <span className="fw-bold">2</span>
             </div>
           </div>
 
@@ -176,7 +176,7 @@ export default function Hero() {
               >
                 Baños
               </small>
-              <span className="fw-bold">4</span>
+              <span className="fw-bold">2</span>
             </div>
           </div>
         </div>
