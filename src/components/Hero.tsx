@@ -52,15 +52,15 @@ export default function Hero() {
           className="display-3 mb-4 site-hero-title"
           style={{ fontFamily: "'Playfair Display', serif", fontWeight: "500" }}
         >
-          Finca en venta <br /> en el corazón de Palmar de Varela
+          Finca Guadalupe <br /> en Palmar de Varela
         </h1>
 
         <p
           className="lead mb-5 site-hero-lead"
           style={{ maxWidth: "600px", fontSize: "1.1rem" }}
         >
-          Oportunidad de inversión: Finca productiva con autonomía de agua 24h y
-          cultivo de limón en producción. El equilibrio perfecto entre descanso y rentabilidad.
+          Oportunidad de inversión: Finca productiva con autonomía hídrica 24h,
+          <strong> energía solar, internet ilimitado</strong> y cultivo de limón en producción.
         </p>
 
         {/* Fila de Iconos de Características */}
@@ -185,7 +185,7 @@ export default function Hero() {
           className="btn btn-success px-4 py-2 site-hero-cta"
           onClick={() =>
             window.open(
-              "https://wa.me/+573152261110?text=Hola, me interesa la finca en venta en Palmar de Varela.",
+              "https://wa.me/+573152261110?text=Hola, me interesa la Finca Guadalupe en Palmar de Varela.",
             )
           }
           style={{

@@ -21,12 +21,12 @@ export default function Caracteristicas() {
       ]
     },
     {
-      title: "Recursos Hídricos",
-      icon: "fa-droplet",
+      title: "Tecnología y Servicios",
+      icon: "fa-wifi",
       items: [
-        { label: "Abastecimiento", value: "Pozo profundo tecnificado con suministro continuo 24 horas" },
-        { label: "Distribución", value: "Sistema de riego funcional en toda la extensión de la finca" },
-        { label: "Almacenamiento", value: "3 tanques elevados de reserva para presión constante" }
+        { label: "Energía Eléctrica", value: "Red pública (Air-e) y respaldo mediante paneles solares" },
+        { label: "Agua Permanente", value: "Pozo profundo (24h), sistema de riego y 3 tanques de reserva" },
+        { label: "Conectividad", value: "Internet ilimitado y cámaras de seguridad con acceso remoto" }
       ]
     },
     {
