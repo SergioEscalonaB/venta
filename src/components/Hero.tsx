@@ -18,7 +18,7 @@ export default function Hero() {
       className="text-white d-flex align-items-center position-relative site-hero"
       style={{
         minHeight: "100vh",
-        backgroundImage: "url(/galeria/30.jpg)", // Cambiar aca la imgane principal de fondo
+        backgroundImage: "url(/galeria/14.jpg)", // Cambiar aca la imgane principal de fondo
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
