@@ -192,11 +192,11 @@ export default function Galeria() {
               className="p-0 border-0 bg-transparent w-100"
               onClick={() => openAt(idx)}
               aria-label={`Abrir ${it.alt}`}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", position: "relative" }}
             >
               <div
                 className="rounded overflow-hidden"
-                style={{ aspectRatio: "4 / 3", background: "#f0f0f0" }}
+                style={{ aspectRatio: "4 / 3", background: "#f0f0f0", position: "relative" }}
               >
                 {/* En el grid siempre usamos la miniatura (thumb) para carga instantánea */}
                 <img
