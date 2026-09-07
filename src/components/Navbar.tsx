@@ -62,7 +62,7 @@ export default function Navbar() {
             href="#"
           >
             <img
-              src="/Logo_solo.png"
+              src={`${import.meta.env.BASE_URL}Logo_solo.png`}
               alt="Logo Finca Guadalupe"
               className="site-navbar-logo"
               style={{ height: "40px", width: "auto", marginRight: "10px" }}

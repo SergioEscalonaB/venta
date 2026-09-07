@@ -8,7 +8,7 @@ type GalleryItem = {
 };
 
 // Lista estática de archivos para evitar el escaneo HEAD lento en cada carga.
-const STATIC_GALLERY_ITEMS: GalleryItem[] = [
+const RAW_STATIC_GALLERY_ITEMS: GalleryItem[] = [
   { src: "/galeria/1.jpg", thumb: "/galeria/thumbs/1.jpg", alt: "Foto 1 de la finca", type: "image" },
   { src: "/galeria/2.jpg", thumb: "/galeria/thumbs/2.jpg", alt: "Foto 2 de la finca", type: "image" },
   { src: "/galeria/3.mp4", thumb: "/galeria/thumbs/3.jpg", alt: "Video 3 de la finca", type: "video" },
@@ -72,6 +72,12 @@ const STATIC_GALLERY_ITEMS: GalleryItem[] = [
   { src: "/galeria/63.mp4", thumb: "/galeria/thumbs/63.jpg", alt: "Video 63 de la finca", type: "video" },
   { src: "/galeria/64.mp4", thumb: "/galeria/thumbs/64.jpg", alt: "Video 64 de la finca", type: "video" },
 ];
+ 
+const STATIC_GALLERY_ITEMS: GalleryItem[] = RAW_STATIC_GALLERY_ITEMS.map((item) => ({
+  ...item,
+  src: item.src.startsWith("/") ? `${import.meta.env.BASE_URL}${item.src.slice(1)}` : item.src,
+  thumb: item.thumb.startsWith("/") ? `${import.meta.env.BASE_URL}${item.thumb.slice(1)}` : item.thumb,
+}));
 
 export default function Galeria() {
   const [isOpen, setIsOpen] = React.useState(false);
